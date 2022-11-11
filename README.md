@@ -8,5 +8,5 @@ https://github.com/cassandrakise/ucb-assignment-18-nosql-social-network-api
 https://cassandrakise.github.io/ucb-assignment-18-nosql-social-network-api/
 
 ## Images
-[Screenshot!](./images/users.jpg)
-[Screenshot!](./images/thought.jpg)
+![Screenshot](./images/users.jpg)
+![Screenshot](./images/thought.jpg)
