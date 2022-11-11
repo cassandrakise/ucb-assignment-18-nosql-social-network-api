@@ -15,7 +15,6 @@ const thoughtController = {
         try {
             const results = await Thought.findOne({
                 _id: req.params.thoughtId })
-                .populate('friends')
                 .populate('thoughts')
             res.json(results)
         }
