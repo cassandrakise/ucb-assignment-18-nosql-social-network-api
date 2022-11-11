@@ -4,7 +4,7 @@ const userController = {
      getAllUsers: async ( req, res ) =>  {
         try {
             const results = await User.find()
-            res.json(results)
+            return res.json(results)
         }
         catch(err) {
             res.status(500).json(err);
@@ -16,7 +16,7 @@ const userController = {
                 _id: req.params.userId })
                 .populate('friends')
                 .populate('thoughts')
-            res.json(results)
+           return res.json(results)
         }
         catch(err) {
             res.status(500).json(err);
@@ -25,7 +25,7 @@ const userController = {
     postNewUser: async (req, res) => {
         try {
             const results = await User.create(req.body)
-            res.json(results)                
+            return res.json(results)                
         }
         catch(err) {
             res.status(500).json(err);
@@ -38,7 +38,7 @@ const userController = {
                 { $set: req.body},
                 { runValidators: true, new: true}
             ) 
-            res.json(results)
+          return res.json(results)
         }
         catch(err) {
             res.status(500).json(err);
@@ -48,8 +48,8 @@ const userController = {
         try {
             const results = await User.findOneAndDelete(
                 {_id: req.params.userId},
-                res.json(results),
-            )
+                )
+            res.json(results)
         }
         catch(err) {
             res.status(500).json(err);

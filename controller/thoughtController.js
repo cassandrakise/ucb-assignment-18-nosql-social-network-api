@@ -62,6 +62,37 @@ const thoughtController = {
             res.status(500).json(err);
         }
     },
+    addReaction: async (req, res) => {
+        try {
+            const results = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtId},
+                { $addToSet: {
+                    reactions: req.params.thoughtId
+                }},
+                { new: true }
+            )
+            res.json(results)                
+        }
+        catch(err) {
+            res.status(500).json(err);
+        }
+    },
+    deleteReaction: async (req, res) => {
+        try {
+            const results = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtId},
+                { $pull: {
+                    reactions:{
+                        reactionId:req.params.thoughtId }
+                }},
+                { new: true }
+            )
+            res.json(results)                
+        }
+        catch(err) {
+            res.status(500).json(err);
+        }
+    }
 }
 
 module.exports = thoughtController;
