@@ -15,7 +15,6 @@ const thoughtController = {
         try {
             const results = await Thought.findOne({
                 _id: req.params.thoughtId })
-                .populate('thoughts')
             res.json(results)
         }
         catch(err) {
@@ -66,7 +65,7 @@ const thoughtController = {
             const results = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId}, // changed to body instead of params while working with AskBCS
                 { $addToSet: {
-                    reactions: req.body.thoughtId // changed to body instead of params while working with AskBCS
+                    reactions: req.body // changed to body/removedId instead of params while working with AskBCS
                 }},
                 { new: true }
             )
