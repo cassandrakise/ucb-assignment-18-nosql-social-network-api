@@ -69,6 +69,22 @@ const userController = {
         catch(err) {
             res.status(500).json(err);
         }
+    },
+    deleteFriend: async (req, res) => {
+        try {
+            const results = await User.findOneAndDelete(
+                { _id: req.params.userId},
+                { $pull: {
+                    friends:{
+                        friendId:req.params.userId}
+                }},
+                { new: true }
+            )
+            res.json(results)                
+        }
+        catch(err) {
+            res.status(500).json(err);
+        }
     }
 }
 
