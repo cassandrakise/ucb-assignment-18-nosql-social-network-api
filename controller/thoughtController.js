@@ -64,7 +64,7 @@ const thoughtController = {
     addReaction: async (req, res) => {
         try {
             const results = await Thought.findOneAndUpdate(
-                { _id: req.body.thoughtId}, // changed to body instead of params while working with AskBCS
+                { _id: req.params.thoughtId}, // changed to body instead of params while working with AskBCS
                 { $addToSet: {
                     reactions: req.body.thoughtId // changed to body instead of params while working with AskBCS
                 }},
