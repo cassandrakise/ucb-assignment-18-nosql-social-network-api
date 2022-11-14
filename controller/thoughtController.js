@@ -54,8 +54,8 @@ const thoughtController = {
         try {
             const results = await Thought.findOneAndDelete(
                 {_id: req.params.thoughtId},
-                res.json(results),
-            )
+                )
+                res.json(results)
         }
         catch(err) {
             res.status(500).json(err);
