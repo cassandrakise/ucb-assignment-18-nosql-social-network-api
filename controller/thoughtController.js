@@ -64,9 +64,9 @@ const thoughtController = {
     addReaction: async (req, res) => {
         try {
             const results = await Thought.findOneAndUpdate(
-                { _id: req.params.thoughtId},
+                { _id: req.body.thoughtId}, // changed to body instead of params while working with AskBCS
                 { $addToSet: {
-                    reactions: req.params.thoughtId
+                    reactions: req.body.thoughtId // changed to body instead of params while working with AskBCS
                 }},
                 { new: true }
             )
@@ -75,6 +75,7 @@ const thoughtController = {
         catch(err) {
             res.status(500).json(err);
         }
+        
     },
     deleteReaction: async (req, res) => {
         try {
